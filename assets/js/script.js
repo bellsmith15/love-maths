@@ -37,10 +37,10 @@ function runGame (gameType) {
         displayAdditionQuestion(num1, num2);
     } else if (gameType === "multiply") {
         displayMultiplyQuestion(num1, num2);
-    // } else if (gameType === "subtract") {
-    //     displayMultiplyQuestion(num1, num2);
+    } else if (gameType === "subtract") {
+        displaySubtractQuestion(num1, num2);
     // } else if (gameType === "division") {
-    //     displayMultiplyQuestion(num1, num2);
+    //     displayDivideQuestion(num1, num2);
     } else {
         alert(`unknown game type: ${gameType}`);
         throw `Unkonwn game type: ${gameType}.Aborting!`;
@@ -97,8 +97,8 @@ function calculateCorrectAnswer() {
         return [operand1 + operand2, "addition"];
     } else if (operator === "x") {
         return [operand1 * operand2, "multiply"];
-    // } else if (operator === "-") {
-    //     return [operand1 - operand2, "minus"];
+    } else if (operator === "-") {
+        return [operand1 - operand2, "subtract"];
     // } else if (operator === "/") {
     //     return [operand1 / operand2, "divide"];
     } else {
@@ -131,11 +131,11 @@ function displayAdditionQuestion (operand1, operand2) {
 }
 
 
-// function displaySubtractQuestion (operand1, operand2) {
-//     document.getElementById('operand1').textContent = operand1;
-//     document.getElementById('operand2').textContent = operand2;
-//     document.getElementById('operator').textContent = "-";
-// }
+function displaySubtractQuestion (operand1, operand2) {
+    document.getElementById('operand1').textContent = operand1 > operand2 ? operand1 : operand2; /*ternary operator  Q = Is operand 1 bigger than operand2?  if = operand1 : else = operand2 - so this shows the highest random number first so - minus will be subtractabl and not result in a -4 number*/
+    document.getElementById('operand2').textContent = operand1 > operand2 ? operand2 : operand1; /*ternary operator  Q = Is operand 1 bigger than operand2?  if = operand2 : else = operand1 - so this shows the highest random number first so - minus will be subtractabl and not result in a -4 number*/
+    document.getElementById('operator').textContent = "-";
+}
 
 function displayMultiplyQuestion (operand1, operand2) {
     document.getElementById('operand1').textContent = operand1;
